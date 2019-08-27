@@ -10,7 +10,7 @@ all: $(HTML_FILES) $(WAT_FILES)
 	emcc $(CPPFLAGS) -o $@ $<
 
 %.wat: %.html
-	wasm2wat --enable-all -o $@ $(patsubst %.html,%.wasm,$<)
+	wasm-dis -o $@ $(patsubst %.html,%.wasm,$<)
 
 clean:
 	rm -f *.html; rm -f *.js; rm -f *.wasm; rm -f *.wat
