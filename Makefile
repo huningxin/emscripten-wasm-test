@@ -12,7 +12,7 @@ SSE_CPPFLAGS := -O2 -g2 -msse3 -flax-vector-conversions
 all: $(HTML_FILES) $(WAT_FILES) $(SSE_EXES)
 
 %_sse: %_sse.cc
-	gcc $(SSE_CPPFLAGS) -o $@ $<
+	clang $(SSE_CPPFLAGS) -o $@ $<
 
 %_wasm.html: %_wasm.cc
 	emcc $(WASM_CPPFLAGS) -o $@ $<
