@@ -38,12 +38,15 @@ int main() {
       data[i] = rand() % 255;;
     __v16qu a, b, c;
     srand (time(NULL));
+    clock_t begin = clock();
     for (int i = 0; i < 100000000; ++i)
       v_load_deinterleave(data + rand() % 100, a, b, c);
-    printf("%d %d %d \n",
+    clock_t end = clock();
+    printf("result: %d %d %d \n",
            _mm_cvtsi128_si32(a),
            _mm_cvtsi128_si32(b),
            _mm_cvtsi128_si32(c));
-
+    double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("elapsed time: %f s\n", time_spent);
     return 0;
 }
